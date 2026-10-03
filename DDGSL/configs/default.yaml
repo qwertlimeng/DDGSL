@@ -1,0 +1,32 @@
+# Paths are relative to this YAML file. Replace these with authorized local data.
+dataset:
+  train_path: ../data/train.csv
+  test_path: ../data/test.csv
+  test_label_path: ../data/test_label.csv
+  feature_columns: null       # null: numeric columns except declared metadata
+  timestamp_column: null
+  sequence_id_column: null
+  label_column: label
+  normalized: false           # true: identity scaler; upstream scaling must be documented
+  train_ratio: 0.7
+model:
+  window_size: 32
+  top_k: 10
+  embedding_dim: 64
+  stib_depth: 2
+training:
+  batch_size: 256
+  train_stride: 5
+  learning_rate: 0.001
+  weight_decay: 0.0
+  max_epochs: 100
+  patience: 10
+  mu1: 0.001
+  mu2: 0.003
+  seed: 0
+  optimizer: Adam
+detection:
+  rho: 0.995
+  epsilon: 1.0e-8
+  evaluation_stride: 1
+output_dir: ../runs
